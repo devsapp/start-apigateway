@@ -1,0 +1,22 @@
+{
+  "statefulConfig": {
+    "triggerName": "httpTrigger",
+    "description": "",
+    "triggerId": "f14d383c-e2a3-42e4-a1b6-068da0e11ee8",
+    "sourceArn": null,
+    "triggerType": "http",
+    "invocationRole": null,
+    "qualifier": null,
+    "urlInternet": "https://koa-koa-fra-project-ftkgtnkffr.cn-hangzhou.fcapp.run",
+    "urlIntranet": "https://koa-koa-fra-project-ftkgtnkffr.cn-hangzhou-vpc.fcapp.run",
+    "triggerConfig": {
+      "methods": [
+        "GET"
+      ],
+      "authType": "anonymous"
+    },
+    "createdTime": "2022-08-01T04:33:06Z",
+    "lastModifiedTime": "2022-08-01T04:49:58Z",
+    "name": "httpTrigger"
+  }
+}

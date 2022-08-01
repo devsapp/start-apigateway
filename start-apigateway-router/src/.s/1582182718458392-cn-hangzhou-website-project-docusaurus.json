@@ -1,0 +1,45 @@
+{
+  "statefulConfig": {
+    "functionId": "4a02072e-2adc-4ead-a0fa-364991913470",
+    "functionName": "docusaurus",
+    "description": "Serverless Devs Website Docusaurus Function",
+    "runtime": "custom",
+    "handler": "index.handler",
+    "timeout": 30,
+    "initializer": "",
+    "initializationTimeout": 3,
+    "codeSize": 1105742,
+    "codeChecksum": "3289196352554859054",
+    "memorySize": 512,
+    "gpuMemorySize": null,
+    "environmentVariables": {},
+    "createdTime": "2022-08-01T04:31:20Z",
+    "lastModifiedTime": "2022-08-01T04:49:48Z",
+    "instanceConcurrency": 1,
+    "instanceSoftConcurrency": null,
+    "customContainerConfig": null,
+    "caPort": 9000,
+    "instanceType": "e1",
+    "layers": null,
+    "instanceLifecycleConfig": {
+      "preFreeze": {
+        "handler": "",
+        "timeout": 3
+      },
+      "preStop": {
+        "handler": "",
+        "timeout": 3
+      }
+    },
+    "customDNS": null,
+    "customRuntimeConfig": {
+      "command": [
+        "node"
+      ],
+      "args": [
+        "/code/index.js"
+      ]
+    },
+    "name": "docusaurus"
+  }
+}

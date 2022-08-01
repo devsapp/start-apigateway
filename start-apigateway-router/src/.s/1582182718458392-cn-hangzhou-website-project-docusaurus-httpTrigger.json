@@ -1,0 +1,25 @@
+{
+  "statefulConfig": {
+    "triggerName": "httpTrigger",
+    "description": "",
+    "triggerId": "e464978d-081e-46c7-8ded-b3b82c008836",
+    "sourceArn": null,
+    "triggerType": "http",
+    "invocationRole": null,
+    "qualifier": null,
+    "urlInternet": "https://docusaurus-website-project-avzefgrofi.cn-hangzhou.fcapp.run",
+    "urlIntranet": "https://docusaurus-website-project-avzefgrofi.cn-hangzhou-vpc.fcapp.run",
+    "triggerConfig": {
+      "methods": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "authType": "anonymous"
+    },
+    "createdTime": "2022-08-01T04:31:20Z",
+    "lastModifiedTime": "2022-08-01T04:49:49Z",
+    "name": "httpTrigger"
+  }
+}
