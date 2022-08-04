@@ -2,7 +2,7 @@ Type: Application
 Name: start-apigateway-router
 Provider:
   - 阿里云
-Version: 0.0.1
+Version: dev
 Description: API 网关
 HomePage: https://github.com/devsapp/start-apigateway
 Tags:
