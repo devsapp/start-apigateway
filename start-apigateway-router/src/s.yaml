@@ -81,11 +81,14 @@ services:
           routeConfigs:
             - path: '/*'
   api-gateway:
-    component: api-gateway
+    component: api-gateway@dev
     props:
       region: ${vars.region}
       instanceId: api-shared-vpc-002 #实例
       groupName: apiGroup #组名
+      domains: 
+       - 'xx.com'
+       - 'tt.com' 
       apis: 
         - apiName: api1
           requestConfig: 
