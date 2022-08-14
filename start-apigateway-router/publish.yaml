@@ -34,3 +34,23 @@ Parameters:
         - cn-hongkong
         - ap-southeast-1
         - us-west-1
+    website-name: 
+      title: Docusaurus项目名称
+      type: string
+      default: website-project
+      description: Docusaurus项目名称
+    koa-name:
+      title: koa项目名称
+      type: string
+      default: koa-framework-project
+      description: koa项目名称
+    api-group:
+      title: api网关组名称
+      type: string
+      default: apiGroup
+      description: api网关组名称  
+    custom-domain:
+      title: api网关绑定的自定义域名
+      type: string
+      default:
+      description: api网关绑定的自定义域名,选填 

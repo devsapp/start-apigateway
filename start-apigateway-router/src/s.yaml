@@ -1,9 +1,9 @@
 edition: 1.0.0          #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
 name: api-gateway-framework       #  项目名称
-access: default     #  秘钥别名 "{{ access }}"
+access: "{{ access }}"   #  秘钥别名 如 default
 
 vars: # 全局变量
-  region: cn-hangzhou  # "{{region}}"
+  region: "{{region}}"  # 地域别名 如 cn-hangzhou
 
 services:
   website: # 业务名称/模块名称
@@ -18,7 +18,7 @@ services:
     props: # 组件的属性值
       region: ${vars.region}
       service:
-        name: "website-project"
+        name: "{{website-name}}" #Docusaurus项目名称 如 website-project
         description: "Serverless Devs Website Service"
       function:
         name: "docusaurus"
@@ -59,7 +59,7 @@ services:
     props: # 组件的属性值
       region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
       service: 
-        name: "koa-framework-project"
+        name: "{{koa-name}}" #koa项目名称 如 koa-framework-project
         description: 'Serverless Devs Web Framework Service'
       function:
         name: "koa"
@@ -85,10 +85,8 @@ services:
     props:
       region: ${vars.region}
       instanceId: api-shared-vpc-002 #实例
-      groupName: apiGroup #组名
-      domains: 
-       - 'xx.com'
-       - 'tt.com' 
+      groupName: "{{api-group}}" #组名 如 apiGroup
+      custom_domain: "{{custom-domain}}" #自定义域名，选填
       apis: 
         - apiName: api1
           requestConfig: 
