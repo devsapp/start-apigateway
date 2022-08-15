@@ -49,8 +49,8 @@ Parameters:
       type: string
       default: apiGroup
       description: api网关组名称  
-    custom-domain:
-      title: api网关绑定的自定义域名
-      type: string
-      default:
-      description: api网关绑定的自定义域名,选填 
+    # custom-domain:
+    #   title: api网关绑定的自定义域名
+    #   type: string
+    #   default:
+    #   description: api网关绑定的自定义域名,选填 

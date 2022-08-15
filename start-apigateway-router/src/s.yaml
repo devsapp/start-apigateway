@@ -86,7 +86,7 @@ services:
       region: ${vars.region}
       instanceId: api-shared-vpc-002 #实例
       groupName: "{{api-group}}" #组名 如 apiGroup
-      custom_domain: "{{custom-domain}}" #自定义域名，选填
+      #custom_domain: "" #自定义域名，选填
       apis: 
         - apiName: api1
           requestConfig: 

@@ -3,7 +3,7 @@
  * @Author: Wang Dejiang(aei)
  * @Date: 2022-07-30 21:57:43
  * @LastEditors: Wang Dejiang(aei)
- * @LastEditTime: 2022-08-14 22:29:13
+ * @LastEditTime: 2022-08-15 22:10:37
 -->
 <h1 align="center">api-gateway 组件快速应用</h1>
 <p align="center" class="flex justify-center">
@@ -35,7 +35,25 @@
 
 注意事项:
   
-  初始化时不输入自定义域名选项，则api网关组自动生成的公网域名访问时会由于请求头格式原因直接将响应作为文件下载。如果需要访问页面，则需要绑定好提前备案且经过解析的域名。域名备案解析过程详情可见：[分组的域名绑定](https://help.aliyun.com/document_detail/159014.html)。
+  初始化时由于没有自定义域名选项，则api网关组自动生成的公网域名访问会由于请求头设置的格式原因，直接将响应作为文件下载。如果需要访问页面，则需要绑定好提前备案且经过解析的域名。域名备案解析过程详情可见：[分组的域名绑定](https://help.aliyun.com/document_detail/159014.html)。
+
+  成功绑定域名后，可前往api网关控制台手动绑定域名，或者来到新建的应用下，执行绑定域名的命令：
+  ```
+  s api-gateway domain xxx.com  //绑定xxx.com域名，实际操作中换成您已备案且解析好的自定义域名
+  ```
+(当然，您也可以选择修改s.yaml文件，添加自定义域名配置)
+
+最终效果：
+
+- 绑定自定义域名
+![](https://aeiblog-1301396258.cos.ap-chengdu.myqcloud.com/img/A964D63F-31EF-46FC-A0A8-62063E358646.png)
+
+- Docusaurus应用
+![](https://aeiblog-1301396258.cos.ap-chengdu.myqcloud.com/img/Snipaste_2022-08-15_22-06-34.png)
+
+- Koa应用
+![](https://aeiblog-1301396258.cos.ap-chengdu.myqcloud.com/img/Snipaste_2022-08-15_22-07-21.png)
+
 
 
 -----
