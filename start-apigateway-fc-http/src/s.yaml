@@ -3,10 +3,10 @@ name: api-gateway-framework       #  项目名称
 access: "{{ access }}"   #  秘钥别名 如 default
 
 vars: # 全局变量
-  region: "{{region}}"  # 地域别名 如 cn-hangzhou
+  region: "{{ region }}"  # 地域别名 如 cn-hangzhou
 
 services:
-  website: # 业务名称/模块名称
+  frontend: # 业务名称/模块名称
     component: fc # 组件名称
     actions:
       pre-deploy:
@@ -18,7 +18,7 @@ services:
     props: # 组件的属性值
       region: ${vars.region}
       service:
-        name: "{{frontend}}" #Docusaurus项目名称 如 website-project
+        name: "{{ frontend }}" #Docusaurus项目名称 如 frontend
         description: "Serverless Devs Website Service"
       function:
         name: "docusaurus"
@@ -95,7 +95,6 @@ services:
             servicePath: /*
             serviceAddress: ${frontend.output.url.system_url}
         - apiName: fc-http-api
-          regionId: ${vars.region} #不配置默认全局变量
           requestConfig:
             requestPath: /api/*
             requestProtocol: 'HTTP,HTTPS'

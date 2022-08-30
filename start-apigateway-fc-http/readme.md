@@ -2,20 +2,19 @@
  * @Descripttion: 
  * @Author: Wang Dejiang(aei)
  * @Date: 2022-07-30 21:57:43
- * @LastEditors: Wang Dejiang(aei)
- * @LastEditTime: 2022-08-15 22:10:37
+ * @LastEditors: aei imaei@foxmail.com
+ * @LastEditTime: 2022-08-30 22:00:27
 -->
 <h1 align="center">api-gateway 组件快速应用</h1>
 <p align="center" class="flex justify-center">
   <a href="https://nodejs.org/en/" class="ml-1">
     <img src="https://img.shields.io/badge/node-%3E%3D%2010.8.0-brightgreen" alt="node.js version">
   </a>
-  <a href="https://github.com/devsapp/start-sae/blob/master/LICENSE" class="ml-1">
+  <a href="https://github.com/devsapp/start-apigateway/blob/master/LICENSE" class="ml-1">
     <img src="https://img.shields.io/badge/License-MIT-green" alt="license">
   </a>
-  <a href="https://github.com/devsapp/start-sae/issues" class="ml-1">
-    <img src="https://img.shields.io/github/issues/devsapp/start-sae" alt="issues">
-  </a>
+  <a href="https://github.com/devsapp/start-apigateway/issues" class="ml-1">
+    <img src="https://img.shields.io/github/issues/devsapp/start-apigateway" alt="issues">
   </a>
 </p>
 
