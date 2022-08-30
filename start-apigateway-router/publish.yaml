@@ -2,7 +2,7 @@ Type: Application
 Name: start-apigateway-router
 Provider:
   - 阿里云
-Version: dev
+Version: 0.0.1
 Description: API 网关
 HomePage: https://github.com/devsapp/start-apigateway
 Tags:
@@ -34,17 +34,17 @@ Parameters:
         - cn-hongkong
         - ap-southeast-1
         - us-west-1
-    website-name: 
+    websiteName: 
       title: Docusaurus项目名称
       type: string
       default: website-project
       description: Docusaurus项目名称
-    koa-name:
+    koaName:
       title: koa项目名称
       type: string
       default: koa-framework-project
       description: koa项目名称
-    api-group:
+    apiGroup:
       title: api网关组名称
       type: string
       default: apiGroup
