@@ -18,7 +18,7 @@ services:
     props: # 组件的属性值
       region: ${vars.region}
       service:
-        name: "{{websiteName}}" #Docusaurus项目名称 如 website-project
+        name: "{{frontend}}" #Docusaurus项目名称 如 website-project
         description: "Serverless Devs Website Service"
       function:
         name: "docusaurus"
@@ -59,7 +59,7 @@ services:
     props: # 组件的属性值
       region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
       service: 
-        name: "{{koaName}}" #koa项目名称 如 koa-framework-project
+        name: "{{backend}}" #koa项目名称 如 koa-framework-project
         description: 'Serverless Devs Web Framework Service'
       function:
         name: "koa"
