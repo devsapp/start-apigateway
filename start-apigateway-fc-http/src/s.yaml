@@ -1,0 +1,110 @@
+edition: 1.0.0          #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
+name: api-gateway-framework       #  项目名称
+access: "{{ access }}"   #  秘钥别名 如 default
+
+vars: # 全局变量
+  region: "{{region}}"  # 地域别名 如 cn-hangzhou
+
+services:
+  website: # 业务名称/模块名称
+    component: fc # 组件名称
+    actions:
+      pre-deploy:
+        - run: npm install
+          path: ./frontend
+        - run: npm run build
+          path: ./frontend
+        - plugin: website-fc
+    props: # 组件的属性值
+      region: ${vars.region}
+      service:
+        name: "{{frontend}}" #Docusaurus项目名称 如 website-project
+        description: "Serverless Devs Website Service"
+      function:
+        name: "docusaurus"
+        description: "Serverless Devs Website Docusaurus Function"
+        codeUri: ./frontend/build
+        timeout: 30
+        memorySize: 512
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+      # customDomains:
+      #   - domainName: auto
+      #     protocol: HTTP
+      #     routeConfigs:
+      #       - path: /*
+  backend: # 业务名称/模块名称
+    # 如果只想针对 framework 下面的业务进行相关操作，可以在命令行中加上 framework，例如：
+    # 只对framework进行构建：s framework build
+    # 如果不带有 framework ，而是直接执行 s build，工具则会对当前Yaml下，所有和 framework 平级的业务模块（如有其他平级的模块，例如下面注释的next-function），按照一定顺序进行 build 操作
+    component: fc # 组件名称，Serverless Devs 工具本身类似于一种游戏机，不具备具体的业务能力，组件类似于游戏卡，用户通过向游戏机中插入不同的游戏卡实现不同的功能，即通过使用不同的组件实现不同的具体业务能力
+    actions: # 自定义执行逻辑，关于actions 的使用，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#行为描述
+      pre-deploy: # 在deploy之前运行
+        - run: npm install --production # 要执行的系统命令，类似于一种钩子的形式
+          path: ./backend # 执行系统命令/钩子的路径
+    #        - component: fc build --use-docker               # 要运行的组件，格式为【component: 组件名 命令 参数】（可以通过s cli registry search --type Component 获取组件列表）
+    #        - plugin: myplugin                               # 与运行的插件 （可以通过s cli registry search --type Plugin 获取组件列表）
+    #          args:                                          # 插件的参数信息
+    #            testKey: testValue
+    #      post-deploy: # 在deploy之后运行
+    #        - component: fc versions publish # 要运行的命令行
+    props: # 组件的属性值
+      region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
+      service: 
+        name: "{{backend}}" #koa项目名称 如 koa-framework-project
+        description: 'Serverless Devs Web Framework Service'
+      function:
+        name: "backend"
+        description: 'Serverless Devs Web Framework Function'
+        codeUri: './backend'
+        runtime: custom
+        timeout: 60
+        caPort: 9000
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+      # customDomains:
+      #   - domainName: auto
+      #     protocol: HTTP
+      #     routeConfigs:
+      #       - path: '/*'
+  api-gateway:
+    component: api-gateway
+    props:
+      region: ${vars.region}
+      instanceId: api-shared-vpc-002 #实例
+      groupName: "{{apiGroup}}" #组名 如 apiGroup
+      #custom_domain: "" #自定义域名，选填
+      apis: 
+        - apiName: fc-http-index
+          requestConfig: 
+            requestPath: /web/*
+          serviceConfig:
+            servicePath: /*
+            serviceAddress: ${frontend.output.url.system_url}
+        - apiName: fc-http-api
+          regionId: ${vars.region} #不配置默认全局变量
+          requestConfig:
+            requestPath: /api/*
+            requestProtocol: 'HTTP,HTTPS'
+            requestHttpMethod: GET
+            requestMode: MAPPING
+            bodyFormat: STREAM
+          serviceConfig:
+            servicePath: /*
+            serviceProtocol: HTTP
+            serviceAddress: ${backend.output.url.system_url}
+            contentTypeCatagory: DEFAULT
+            contentTypeValue: 'application/json; charset=UTF-8'
