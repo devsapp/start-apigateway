@@ -81,7 +81,7 @@ services:
           routeConfigs:
             - path: '/*'
   api-gateway:
-    component: api-gateway@dev
+    component: api-gateway
     props:
       region: ${vars.region}
       instanceId: api-shared-vpc-002 #实例
