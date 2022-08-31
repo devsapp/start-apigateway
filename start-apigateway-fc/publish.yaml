@@ -2,7 +2,7 @@ Type: Application
 Name: start-apigateway-fc
 Provider:
   - 阿里云
-Version: 0.0.3
+Version: 0.0.4
 Description: API 网关
 HomePage: https://github.com/devsapp/start-apigateway
 Tags:
@@ -46,7 +46,7 @@ Parameters:
     serviceName:
       title: 服务名
       type: string
-      default: frontend
+      default: api-gateway
       description: 服务名  
     frontendFunctionName:
       title: 前端工程名
