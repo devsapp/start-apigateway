@@ -65,13 +65,13 @@ services:
       groupName: "{{ apiGroup }}" #组名 如 apiGroup
       #custom_domain: "" #自定义域名，选填
       apis: 
-        - apiName: fc-http-index
+        - apiName: fc-event-index
           requestConfig: 
             requestPath: /web/*
           serviceConfig:
             servicePath: /*
             serviceAddress: ${frontend.output.url.system_url}
-        - apiName: fc-http-api
+        - apiName: fc-event-api
           requestConfig:
             requestPath: /api/*
             requestProtocol: 'HTTP,HTTPS'
@@ -86,4 +86,4 @@ services:
               serviceName: ${backend.output.service.name}
               functionName: ${backend.output.function.name}
               qualifier: LATEST
-              roleArn: acs:ram::{{accountID}}:role/{{ramRole}}
+              roleArn: {{roleArn}}
