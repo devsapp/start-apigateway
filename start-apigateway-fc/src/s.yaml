@@ -21,10 +21,10 @@ services:
     props: # 组件的属性值
       region: ${vars.region}
       service:
-        name: "{{ frontend }}" #Docusaurus项目名称 如 frontend
+        name: "{{ serviceName }}" #Docusaurus项目名称 如 frontend
         description: "Serverless Devs Website Service"
       function:
-        name: "docusaurus"
+        name: "{{ frontendFunctionName }}"
         description: "Serverless Devs Website Docusaurus Function"
         codeUri: ./frontend/build
         timeout: 30
@@ -43,14 +43,14 @@ services:
     # 如果只想针对 helloworld 下面的业务进行相关操作，可以在命令行中加上 helloworld，例如：
     # 只对helloworld进行构建：s helloworld build
     # 如果不带有 helloworld ，而是直接执行 s build，工具则会对当前Yaml下，所有和 helloworld 平级的业务模块（如有其他平级的模块，例如下面注释的next-function），按照一定顺序进行 build 操作
-    component:  fc # 组件名称，Serverless Devs 工具本身类似于一种游戏机，不具备具体的业务能力，组件类似于游戏卡，用户通过向游戏机中插入不同的游戏卡实现不同的功能，即通过使用不同的组件实现不同的具体业务能力
+    component:  fc
     props:
       region: ${vars.region}              # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
       service: 
         name: "{{ serviceName }}"
         description: 'hello world by serverless devs'
       function:
-        name: "{{ functionName }}"
+        name: "{{ backendFunctionName }}"
         description: 'hello FunctionCompute by serverless devs'
         runtime: nodejs14
         codeUri: ./backend
@@ -61,7 +61,7 @@ services:
     component: api-gateway
     props:
       region: ${vars.region}
-      instanceId: api-shared-vpc-002 #实例
+      instanceId: {{instanceId}} # 实例
       groupName: "{{ apiGroup }}" #组名 如 apiGroup
       #custom_domain: "" #自定义域名，选填
       apis: 
@@ -83,7 +83,7 @@ services:
             functionComputeConfig: 
               fcType: FCEvent
               fcRegionId: ${vars.region}
-              serviceName: ${backend.output.service.name}
-              functionName: ${backend.output.function.name}
+              serviceName: {{serviceName}}
+              functionName: {{backendFunctionName}}
               qualifier: LATEST
               roleArn: {{roleArn}}

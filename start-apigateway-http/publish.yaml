@@ -34,12 +34,22 @@ Parameters:
         - cn-hongkong
         - ap-southeast-1
         - us-west-1
-    frontend: 
+    instanceId:
+      title: 实例ID
+      type: string
+      default: api-shared-vpc-002
+      description: 实例ID
+    serviceName:
+      title: 服务名
+      type: string
+      default: frontend
+      description: 服务名  
+    frontendFunctionName:
       title: 前端工程名
       type: string
       default: frontend
       description: 前端工程名
-    backend:
+    backendFunctionName:
       title: 后端接口名
       type: string
       default: backend
