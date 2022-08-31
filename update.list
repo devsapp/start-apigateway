@@ -1,1 +1,2 @@
-start-apigateway-fc-http
+start-apigateway-http
+start-apigateway-fc-event
